@@ -1,0 +1,45 @@
+<div class="min-vh-100 d-flex flex-column col-lg-9 mx-auto">
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand">管理系统</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="#">主页 <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="['/login']">登录</a>
+        </li>
+      </ul>
+      <form class="form-inline my-2 my-lg-0">
+        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">查找</button>
+      </form>
+    </div>
+  </nav>
+
+  <div class="row w-100 my-3">
+    <div class="col-md-3">
+      <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+        <a class="nav-link dropdown-toggle"  data-toggle="dropdown"  role="button" aria-haspopup="true" aria-expanded="false">设备管理</a>
+      <div class="dropdown-menu">
+      <a class="dropdown-item" [routerLink]="['manage1']">设备信息</a>
+      <a class="dropdown-item" [routerLink]="['manage4']">设备添加</a>
+      </div>
+        <a class="nav-link" id="v-pills-profile-tab"  [routerLink]="['manage2']">设备状态</a>
+        <a class="nav-link" id="v-pills-messages-tab"  [routerLink]="['manage3']">用户管理</a>
+        <a class="nav-link" id="v-pills-messages-tab"  [routerLink]="['manage5']">设备控制</a>
+    </div>
+    </div>
+    <div class="col-md-9">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</div>
+
+
+
+

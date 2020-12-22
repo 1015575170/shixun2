@@ -1,0 +1,36 @@
+
+<p>
+    <button class="btn btn-primary btn-lg btn-block" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+      LED
+    </button>
+</p>
+  <div class="collapse" id="collapseExample">
+    <div class="card card-body">
+        <button type="button" class="btn btn-primary" (click)="ledon()">开</button>
+        <button type="button" class="btn btn-dark" (click)="ledoff()">关</button>
+    </div>
+  </div>
+  <p>
+    <button class="btn btn-primary btn-lg btn-block" type="button" data-toggle="collapse" data-target="#collapseExample1" aria-expanded="false" aria-controls="collapseExample1">
+      空调
+    </button>
+</p>
+  <div class="collapse" id="collapseExample1">
+    <div class="card card-body">
+        <button type="button" class="btn btn-primary" (click)="acon()">开</button>
+        <button type="button" class="btn btn-dark" (click)="acoff()">关</button>
+    </div>
+  </div>
+  <p>
+    <button class="btn btn-primary btn-lg btn-block" type="button" data-toggle="collapse" data-target="#collapseExample2" aria-expanded="false" aria-controls="collapseExample2">
+     风扇
+    </button>
+</p>
+  <div class="collapse" id="collapseExample2">
+    <div class="card card-body">
+        <button type="button" class="btn btn-primary" (click)="fanhigh()">高</button>
+        <button type="button" class="btn btn-secondary" (click)="fanlow()">低</button>
+        <button type="button" class="btn btn-dark" (click)="fanoff()">关</button>
+    </div>
+  </div>
+
