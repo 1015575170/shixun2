@@ -22,7 +22,7 @@ module.exports={
        const id = req.params['id'];   
        const values = req.params['values']
    
-        //console.log("1111")
+        console.log("1111")
        var zz=[id,'hum',values,cz];
        var zzz=[values,cz,id]
        stuDao.getStuDao("INSERT INTO device (id,type,value,cz) VALUES (?,?,?,?)",zz,function(err,data){
@@ -34,7 +34,7 @@ module.exports={
     var sql='UPDATE device SET value = ?, cz= ? WHERE id = ?';
     stuDao.getStuDao(sql,zzz,function(err,data){
       if(err){
-        //console.log('[SELECT ERROR] - ',err.message);
+        console.log('[SELECT ERROR] - ',err.message);
         return;
       }
   })  

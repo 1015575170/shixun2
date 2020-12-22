@@ -19,14 +19,14 @@ const int = setInterval(() => {
   if(zz >= 20){
     zt = 1
     cz = "on"
-    console.log(zt)
+    //console.log(zt)
   }else{
     zt = 0
     cz = "off"
    }
  }
   })
-}, 1500);
+}, 500);
 const iot = require('alibabacloud-iot-device-sdk');
 const device = iot.device({
   productKey: 'a1OeqPAQpvJ', //将<productKey>修改为实际产品的ProductKey
@@ -36,7 +36,7 @@ const device = iot.device({
 device.on('connect', () => {
   //将<productKey> <deviceName>修改为实际值
   device.subscribe('/a1OeqPAQpvJ/air777/user/get'); 
-  console.log('connect successfully!');
+ // console.log('connect successfully!');
   //发送消息给谁
   device.publish('/a1OeqPAQpvJ/air777/user/update', 'hello world!');
 });
@@ -60,7 +60,7 @@ module.exports={
   var s='UPDATE device SET value = ?, cz= ? WHERE id = ?';
   stuDao.getStuDao(s,zzz,function(err,result){
     if(err){
-      //console.log('[SELECT ERROR] - ',err.message);
+      console.log('[SELECT ERROR] - ',err.message);
       return;
     }
 })  

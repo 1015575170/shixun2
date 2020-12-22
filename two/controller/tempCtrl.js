@@ -22,7 +22,7 @@ module.exports={
      const id = req.params['id'];   
      const values = req.params['values']
     const wen=parseInt(values);
-    //console.log(wen)
+    console.log(wen)
      var zz=[id,'temp',values,cz];
      var zzz=[values,cz,id]
     var sq="INSERT INTO device (id,type,value,cz) VALUES (?,?,?,?)";
@@ -35,14 +35,14 @@ module.exports={
     var sql='UPDATE device SET value = ?, cz= ? WHERE id = ?';
     stuDao.getStuDao(sql,zzz,function(err,result){
       if(err){
-        //console.log('[SELECT ERROR] - ',err.message);
+        console.log('[SELECT ERROR] - ',err.message);
         return;
       }
   })
     device.postProps({
       CurrentTemperature: wen 
       }, (res) => {
-      });	
+      });	 
       resp.end(); 
 },
 }

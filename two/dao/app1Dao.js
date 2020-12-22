@@ -6,6 +6,5 @@ module.exports={
         dbpool.connect(sql,arr,function(err,data){
             cb(err,data);
         })
-    },   
-
+    }
 }

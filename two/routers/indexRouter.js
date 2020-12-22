@@ -7,9 +7,6 @@ const ledCtrl=require("../controller/ledCtrl")
 const tempCtrl=require("../controller/tempCtrl")
 const humCtrl=require("../controller/humCtrl")
 const eqCtrl=require("../controller/eqCtrl")
-
-
-
 router.put('/led/:id/:status',ledCtrl.led)
 router.put('/ledon',ledCtrl.ledon)
 router.put('/ledoff',ledCtrl.ledoff)
@@ -19,7 +16,7 @@ router.put('/hum/:id/:values',humCtrl.hum)
 router.put('/fan/:id/:status',fanCtrl.fan)
 router.put('/fan/off',fanCtrl.fanoff)
 router.put('/fan/low',fanCtrl.fanlow)
-router.put('/fan/high',fanCtrl.fanhigh)
+ router.put('/fan/high',fanCtrl.fanhigh)
 
 router.put('/ac/:id/:status',acCtrl.ac)
 router.put('/ac/acon',acCtrl.acon) 
@@ -27,6 +24,7 @@ router.put('/ac/acoff',acCtrl.acoff)
 
 router.post("/login",userCtrl.login);
 router.get("/checks",userCtrl.checks);
+router.get("/checks1/:id",userCtrl.checks1);
 router.post("/delete",userCtrl.delete);
 router.post("/update",userCtrl.update);
 

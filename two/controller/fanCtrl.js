@@ -10,7 +10,7 @@ const stuDao=require('../dao/app1Dao')
   device.on('connect', () => {
     //将<productKey> <deviceName>修改为实际值
     device.subscribe('/a10s9Rjg0py/fan777/user/get'); 
-    console.log('connect successfully!');
+   // console.log('connect successfully!');
     //发送消息给谁
     device.publish('/a10s9Rjg0py/fan777/user/update', 'hello world!');
   });
@@ -19,14 +19,15 @@ const stuDao=require('../dao/app1Dao')
   });
   var kg=0;
   var ws=0;
+  var cc;
 module.exports={ 
     fan(req,resp){
        const id = req.params['id'];   
        const status = req.params['status']
        var zz=[id,'fan',status,cz];
-       //console.log(zz)
+      // console.log(zz)
        var zzz=[status,cz,id]
-       //console.log(zzz)
+      // console.log(zzz)
   var sq="INSERT INTO device (id,type,value,cz) VALUES (?,?,?,?)";
   stuDao.getStuDao(sq,zz,function(err,result){
     if(err){
@@ -37,7 +38,7 @@ module.exports={
       var sql='UPDATE device SET value = ?, cz= ? WHERE id = ?';
       stuDao.getStuDao(sql,zzz,function(err,result){
         if(err){
-          //console.log('[SELECT ERROR] - ',err.message);
+          console.log('[SELECT ERROR] - ',err.message);
           return;
         }
     })
@@ -46,26 +47,27 @@ module.exports={
      WindSpeed:ws
       }, (res) => {
     //console.log(res);
-    });	 
+    }); 
     device.onProps((cmd)=>{
-      console.log('>>>onProps',cmd); //打印完整的属性设置消息
+     // console.log('>>>onProps',cmd); //打印完整的属性设置消息
       for(var key in cmd.params){ 
         if(key=='WindSpeed'){ //判断是否设置的是LightSwitch属性
       //   //示例代码将云端设置的属性在本地进行保存，实际产品开发时需要修改为去将灯打开或者关闭
             zt = cmd.params.WindSpeed; 
+            console.log(zt)
       //   //本地设置完毕之后，将更新后的状态报告给云端。
       //   //注意：云端下发命令后，云端属性的值并不会改变，云端需要等待来自设备端的属性上报
              device.postProps({'WindSpeed': zt});
          }
        }
-       })
+       }) 
        ws=zt;
-      if(zt>0){
+      if(zt > 0){
         cz="on"
-        kg=1
+        console.log(cz)  
       }else{
         cz="off"
-        kg=0
+        console.log(cz) 
       }
        const obj = {
         id: id,

@@ -10,7 +10,6 @@ const device = iot.device({
 device.on('connect', () => {
   //将<productKey> <deviceName>修改为实际值
   device.subscribe('/a1Yqscm1PNN/LED777/user/get'); 
-  console.log('connect successfully!');
   //发送消息给谁
   device.publish('/a1Yqscm1PNN/LED777/user/update', 'hello world!');
 });
@@ -48,6 +47,7 @@ module.exports={
    if(key=='LightStatus'){ //判断是否设置的是LightSwitch属性
  //   //示例代码将云端设置的属性在本地进行保存，实际产品开发时需要修改为去将灯打开或者关闭
     aliLedStatus = cmd.params.LightStatus; 
+    console.log(aliLedStatus);
  //   //本地设置完毕之后，将更新后的状态报告给云端。
  //   //注意：云端下发命令后，云端属性的值并不会改变，云端需要等待来自设备端的属性上报
         device.postProps({'LightStatus': aliLedStatus});
@@ -59,6 +59,7 @@ module.exports={
         success: true, // 是否成功
         status: aliLedStatus // 将云服务器的设备状态放入status字段里
         };
+       // console.log(obj)
         resp.write(JSON.stringify(obj));
 // 结束应答
         resp.end();        
