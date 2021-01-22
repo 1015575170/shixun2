@@ -1,4 +1,4 @@
-<div class="min-vh-100 d-flex flex-column col-lg-9 mx-auto">
+<!-- <div class="min-vh-100 d-flex flex-column col-lg-9 mx-auto">
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <a class="navbar-brand">管理系统</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -38,6 +38,46 @@
       <router-outlet></router-outlet>
     </div>
   </div>
+</div> -->
+<nav class="navbar navbar-expand-lg navbar-light bg-light a">
+  <a class="navbar-brand a" href="#">智能喂食器</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class=" row collapse navbar-collapse" id="navbarTogglerDemo02">
+    <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+      <li class="nav-item active">
+        <a class="nav-link active z" [routerLink]="['manage3']">
+          用户管理
+         </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link z"  data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+          设备信息
+            </a>
+            <div class="collapse" id="collapseExample">
+              <a class="nav-link b" [routerLink]="['manage4']">阿里云设备信息</a> 
+              <a class="nav-link b" [routerLink]="['manage5']">本地设备信息</a> 
+            </div>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link z" data-toggle="collapse" href="#collapseExample1" role="button" aria-expanded="false" aria-controls="collapseExample">
+          设备控制
+          </a>
+          <div class="collapse" id="collapseExample1">
+            <a class="nav-link b" [routerLink]="['manage1']">阿里云控制</a> 
+            <a class="nav-link b" [routerLink]="['manage6']">本地控制</a> 
+          </div>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link z" [routerLink]="['manage2']">状态信息</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+<div class="col-md-12">
+  <router-outlet></router-outlet>
 </div>
 
 

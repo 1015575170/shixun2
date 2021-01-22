@@ -1,10 +1,17 @@
-.login-content{
-    height: 100vh;
+body{
+  font-size: 15px;
+  background:url(../../assets/images/1.jpeg);
+  background-size:cover;
+  cursor: url(../../assets/images/222.png),auto;
+}
 
-  }
-  
-  form{
-    width: 35rem;
-    border: 1px solid lightgray;
-    padding: 2rem;
-  }
+form{
+  width: 30rem;
+ 
+}
+.login-content{
+  height: 100vh;
+}
+.c{
+  height: 18px;
+}

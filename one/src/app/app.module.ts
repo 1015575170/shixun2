@@ -16,6 +16,7 @@ import { LoginGuard } from './login.guard';
 import { AuthService } from './auth.service';
 import { NgxEchartsModule } from 'ngx-echarts';
 import { Manage5Component } from './manage5/manage5.component';
+import { Manage6Component } from './manage6/manage6.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { Manage5Component } from './manage5/manage5.component';
     Manage2Component,
     Manage3Component,
     Manage4Component,
-    Manage5Component
+    Manage5Component,
+    Manage6Component
   ],
   imports: [
     BrowserModule,

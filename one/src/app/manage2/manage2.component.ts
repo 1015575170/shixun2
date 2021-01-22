@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { timer } from 'rxjs';
-import * as echarts from 'echarts';
 import { HttpClient } from '@angular/common/http';
 @Component({
   selector: 'app-manage2',
@@ -16,20 +15,20 @@ export class Manage2Component implements OnInit {
     
   }
 
-public xAxis = [];
-public temps = [];
-public humds = [];
-  
+  public xAxis = [];
+  public temps = [];
+  public humds = [];
+  public dogT = [];
   ngOnInit() {
-   this.chartOption = {
+    this.chartOption = {
       title:{
-        text:'温度跟踪图'
+        text:''
       },
       tooltip:{
         trigger:'axis'
       },
       legend:{
-        data:['温度','湿度']
+        data:['温度','湿度','体温']
       },
       toolbox:{
         feature:{
@@ -59,7 +58,7 @@ public humds = [];
           name:'温度',
           type:'line',
           stack:'度',
-          areaStyle:{ normal:{} },
+          areaStyle:{ normale:{} },
           data:[]
         },
         {
@@ -69,9 +68,16 @@ public humds = [];
           areaStyle:{ normale:{} },
           data:[]
         },
+        {
+          name:'体温',
+          type:'line',
+          stack:'度1',
+          areaStyle:{ normale:{} },
+          data:[]
+        },
       ]
     };
-    timer(2000,2000).subscribe(
+    timer(1000,1000).subscribe(
       () => {
         this.httpClient.get(this.baseUrl+'env/001/10',{}).subscribe(
           (value:any) => {
@@ -86,6 +92,7 @@ public humds = [];
                 this.xAxis[i] += ":" + (d.getSeconds() > 9 ? d.getSeconds() : '0' + d.getSeconds());
                 this.temps[i] =(item.temp);
                 this.humds[i] =(item.humd);
+                this.dogT[i]  =(item.dogT);
                 i--;
               }
               this.updateOption ={
@@ -98,6 +105,8 @@ public humds = [];
                   data:this.temps
                 },{
                   data:this.humds
+                },{
+                  data:this.dogT
                 }]
               }
             }
@@ -106,6 +115,5 @@ public humds = [];
       }
     );
   }
-
 
 }

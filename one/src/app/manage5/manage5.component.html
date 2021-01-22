@@ -1,36 +1,62 @@
-
-<p>
-    <button class="btn btn-primary btn-lg btn-block" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-      LED
-    </button>
-</p>
-  <div class="collapse" id="collapseExample">
-    <div class="card card-body">
-        <button type="button" class="btn btn-primary" (click)="ledon()">开</button>
-        <button type="button" class="btn btn-dark" (click)="ledoff()">关</button>
+<!-- <div class="container">
+  <div class="row a">
+    <div class="col-sm">
+     设备号
+    </div>
+    <div class="col-sm">
+      设备类型
+    </div>
+    <div class="col-sm">
+     设备值
+    </div>
+    <div class="col-sm">
+      设备运行状态
+    </div>
+    <div class="col-sm">
+      阿里云产品key
+    </div>
+    <div class="col-sm">
+      阿里云设备名
     </div>
   </div>
-  <p>
-    <button class="btn btn-primary btn-lg btn-block" type="button" data-toggle="collapse" data-target="#collapseExample1" aria-expanded="false" aria-controls="collapseExample1">
-      空调
-    </button>
-</p>
-  <div class="collapse" id="collapseExample1">
-    <div class="card card-body">
-        <button type="button" class="btn btn-primary" (click)="acon()">开</button>
-        <button type="button" class="btn btn-dark" (click)="acoff()">关</button>
+  <div class="row a" *ngFor='let eqz of eqzs$ | async; let i = index'>
+      <div class="col-sm">
+          {{eqz.id}}
+      </div>
+      <div class="col-sm">
+          {{eqz.type}}
+      </div>
+      <div class="col-sm">
+          {{eqz.value}}
+      </div>
+      <div class="col-sm">
+          {{eqz.cz}}
+      </div>
+      <div class="col-sm">
+          {{eqz.ProductKey}}
+      </div>
+      <div class="col-sm">
+          {{eqz.DeviceName}}
+      </div>
     </div>
-  </div>
-  <p>
-    <button class="btn btn-primary btn-lg btn-block" type="button" data-toggle="collapse" data-target="#collapseExample2" aria-expanded="false" aria-controls="collapseExample2">
-     风扇
-    </button>
-</p>
-  <div class="collapse" id="collapseExample2">
-    <div class="card card-body">
-        <button type="button" class="btn btn-primary" (click)="fanhigh()">高</button>
-        <button type="button" class="btn btn-secondary" (click)="fanlow()">低</button>
-        <button type="button" class="btn btn-dark" (click)="fanoff()">关</button>
-    </div>
-  </div>
-
+</div> -->
+<table class="table table-bordered table-dark">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">设备号</th>
+      <th scope="col">设备类型</th>
+      <th scope="col">设备值</th>
+      <th scope="col">设备运行状态</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor='let eqz of eqzs$ | async; let i = index'>
+      <th scope="row">{{i}}</th>
+      <td> {{eqz.id}}</td>
+      <td>{{eqz.type}}</td>
+      <td>{{eqz.value}}</td>
+      <td> {{eqz.cz}}</td>
+    </tr>
+  </tbody>
+</table>

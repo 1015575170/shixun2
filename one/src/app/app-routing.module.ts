@@ -9,12 +9,16 @@ import { Manage3Component } from './manage3/manage3.component';
 import { Manage4Component } from './manage4/manage4.component';
 import { LoginGuard } from './login.guard';
 import { Manage5Component } from './manage5/manage5.component';
+import { Manage6Component } from './manage6/manage6.component';
 const mgtChildrenRoutes: Routes = [
+  { path: '', redirectTo: 'manage1',pathMatch:'full' },
   { path: 'manage1', component: Manage1Component },
   { path: 'manage2', component: Manage2Component },
   { path: 'manage3', component: Manage3Component },
   { path: 'manage4', component: Manage4Component },
   { path: 'manage5', component: Manage5Component },
+  { path: 'manage6', component: Manage6Component },
+  
 ]
 
 const routes: Routes = [

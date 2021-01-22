@@ -1,256 +1,226 @@
-<div class="card-columns">
-    <div class="card col-md-12">
-    <img src="./assets/imgs/LED.png" class="card-img-top" alt="...">
-    <div class="card-body">
-      <h5 class="card-title">设备信息</h5>
-      <p class="card-text">LED</p>
-<!-- Button trigger modal -->
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#staticBackdrop" (click)="LED()">
-  设备详情
-</button>
+<!-- <h2 class="d-flex justify-content-center">阿里云控制</h2>
+<div class="row row-cols-1 row-cols-md-3">
+  <div class="col mb-4">
+    <div class="card h-100">
+      <div class="d-flex justify-content-center">
+        <img src="{{(led$ | async)?.value ==1?'../../../../../assets/images/sxt_on.png':'../../../../assets/images/sxt_off.png'}}" alt="">
+      </div>
+      
+      <div class="card-body d-flex justify-content-center">
+        <a type="button" class="btn btn-primary" (click)="ledOn()">打开</a>
+        <a type="button" class="btn btn-secondary"(click)="ledOff()">关闭</a>
+      </div>
+    </div>
+  </div>
+  <div class="col mb-4">
+    <div class="card h-100">
+      <div class="d-flex justify-content-center">
+         <img src="{{(feed$ | async)?.value ==1?'../../../../../assets/images/feed1.png':'../../../../assets/images/feed2.png'}}" alt="">
+      </div>
+     
+      <div class="card-body d-flex justify-content-center">
+        <a type="button" class="btn btn-primary" (click)="feedOn()">打开</a>
+        <a type="button" class="btn btn-secondary"(click)="feedOff()">关闭</a>
+        <a type="button" class="btn btn-success"data-toggle="modal" data-target="#staticBackdrop">定时</a>
+      </div>
 
-<!-- Modal -->
 <div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="staticBackdropLabel">设备详情</h5>
+        <h5 class="modal-title" id="staticBackdropLabel">定时定温</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <div class="modal-body ">
-    <table class="table table-striped">
-      <thead>
-        <tr>
-          <th scope="col">设备id</th>
-          <th scope="col">设备名称</th>
-          <th scope="col">设备信息</th>
-          <th scope="col">操作状态</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor='let user of users$ | async; '>
-          <th scope="row">{{user.id}}</th>
-          <td>{{user.type}}</td>
-          <td>{{user.value}}</td>
-          <td>{{user.cz}}</td>
-        <td>
-        </td>
-        </tr>
-      </tbody>
-    </table>
+      <div class="modal-body">
+        <form [formGroup]="myForm">
+          <div>
+            <label for="id">定时</label>
+            <input type="text" class="form-control" id="time" name="time" [formControl]='time'>
+            <button type="button" class="btn btn-warning" (click)="time1()">修改</button>
+          </div>
+          <div>
+              <label for="id">定温(上下浮动3度)</label>
+              <input type="text" class="form-control" id="temp1" name="temp1" [formControl]='temp1'>
+              <button type="button" class="btn btn-warning" (click)="temp()">设定</button>
+          </div>
+          </form>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">关闭</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
       </div>
     </div>
   </div>
 </div>
     </div>
   </div>
-
-  <div class="card col-md-12">
-    <img src="./assets/imgs/风扇.png" class="card-img-top" alt="...">
-    <div class="card-body">
-      <h5 class="card-title">设备信息</h5>
-      <p class="card-text">风扇</p>
-      <!-- Button trigger modal -->
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#staticBackdrop" (click)="FAN()">
-  设备详情
-</button>
-
-<!-- Modal -->
-<div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="staticBackdropLabel">设备详情</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
+  <div class="col mb-4">
+    <div class="card h-100">
+      <div class="d-flex justify-content-center">
+      <img src="../../assets/images/{{(dangwei$ | async)?.value}}.png" alt="">
       </div>
-      <div class="modal-body ">
-    <table class="table table-striped">
-      <thead>
-        <tr>
-          <th scope="col">设备id</th>
-          <th scope="col">设备名称</th>
-          <th scope="col">设备信息</th>
-          <th scope="col">操作状态</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor='let user of users$ | async; '>
-          <th scope="row">{{user.id}}</th>
-          <td>{{user.type}}</td>
-          <td>{{user.value}}</td>
-          <td>{{user.cz}}</td>
-        <td>
-        </td>
-        </tr>
-      </tbody>
-    </table>
+      
+      <div class="card-body d-flex justify-content-center">
+        <a type="button" class="btn btn-primary" (click)="one()">1</a>
+        <a type="button" class="btn btn-secondary"(click)="two()">2</a>
+        <a type="button" class="btn btn-primary" (click)="three()">3</a>
+        <a type="button" class="btn btn-secondary"(click)="four()">4</a>
+        <a type="button" class="btn btn-primary" (click)="five()">5</a>
+        <a type="button" class="btn btn-secondary"(click)="six()">6</a>
       </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">关闭</button>
+    </div>
+  </div>
+  <div class="col mb-4">
+    <div class="card h-100">
+      <div class=" card-body d-flex justify-content-center">
+        <img src="{{(baowen$ | async)?.value ==1?'../../../../../assets/images/5.png':'../../../../assets/images/4.png'}}" alt="">
+        </div>
+      <div class="card-body d-flex justify-content-center">
+        <p>降温指示灯</p>
+      </div>
+    </div>
+  </div>
+  <div class="col mb-4">
+    <div class="card h-100">
+      <div class=" card-body d-flex justify-content-center">
+        <img src="{{(baowen1$ | async)?.value ==1?'../../../../../assets/images/1.png':'../../../../assets/images/4.png'}}" alt="">
+        </div>
+      <div class="card-body d-flex justify-content-center">
+        <p>升温指示灯</p>
+      </div>
+    </div>
+  </div>
+  <div class="col mb-4">
+    <div class="card h-100">
+      <div class=" card-body d-flex justify-content-center">
+        <img src="{{(hum1$ | async)?.value ==1?'../../../../../assets/images/3.png':'../../../../assets/images/4.png'}}" alt="">
+        </div>
+      <div class="card-body d-flex justify-content-center">
+        <p>除湿指示灯</p>
+      </div>
+    </div>
+  </div>
+  <div class="col mb-4" style="height: 15rem;">
+    <div class="card h-100">
+      <div class="card-body d-flex justify-content-center">
+        <div class="a" style="text-align: center;">
+        <p>狗粮温度（°C）</p>
+          <p>{{(temp$ | async)?.value}}</p>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+  <div class="col mb-4" style="height: 15rem;">
+    <div class="card h-100">
+      <div class="card-body d-flex justify-content-center">
+        <div class="a" style="text-align: center;">
+          <p>狗粮湿度（%）</p>
+          <p>{{(hum$ | async)?.value}}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col mb-4" style="height: 15rem;">
+    <div class="card h-100">
+      <div class="card-body d-flex justify-content-center">
+        <div class="a" style="text-align: center;">
+          <p>狗子体温（°C）</p>
+          <p>{{(dogT$ | async)?.value}}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div> -->
+<div class="page">
+    <div class="d-flex justify-content-center dd">
+    <img src="{{(led$ | async)?.value ==1?'../../../../../assets/images/sxt_on.png':'../../../../assets/images/sxt_off.png'}}" alt="">
+    <a type="button" class="btn btn-primary btn-sm" (click)="ledOn()">打开</a>
+    <a type="button" class="btn btn-secondary btn-sm"(click)="ledOff()">关闭</a>
+    </div>
+<div class="d-flex justify-content-center cc ">
+  <div>
+    <img src="{{(feed$ | async)?.value ==1?'../../../../../assets/images/feed1.png':'../../../../assets/images/feed2.png'}}" alt="">
+  <a type="button" class="btn btn-primary btn-sm" (click)="feedOn()">打开</a>
+  <a type="button" class="btn btn-secondary btn-sm"(click)="feedOff()">关闭</a>
+  <a type="button" class="btn btn-success btn-sm"data-toggle="modal" data-target="#staticBackdrop">定时</a>
+  <div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="staticBackdropLabel">定时定温</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form [formGroup]="myForm">
+            <div>
+              <label for="id">定时</label>
+              <input type="text" class="form-control" id="time" name="time" [formControl]='time'>
+              <button type="button" class="btn btn-warning" (click)="time1()">修改</button>
+            </div>
+            <div>
+                <label for="id">定温(上下浮动3度)</label>
+                <input type="text" class="form-control" id="temp1" name="temp1" [formControl]='temp1'>
+                <button type="button" class="btn btn-warning" (click)="temp()">设定</button>
+            </div>
+            </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
       </div>
     </div>
   </div>
 </div>
-    </div>
-  </div>
-
-  <div class="card col-md-12">
-    <img src="./assets/imgs/空调.png" class="card-img-top" alt="...">
-    <div class="card-body">
-      <h5 class="card-title">设备信息</h5>
-      <p class="card-text">空调</p>
-      <!-- Button trigger modal -->
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#staticBackdrop" (click)="AC()">
-  设备详情
-</button>
-
-<!-- Modal -->
-<div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="staticBackdropLabel">设备详情</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body ">
-    <table class="table table-striped">
-      <thead>
-        <tr>
-          <th scope="col">设备id</th>
-          <th scope="col">设备名称</th>
-          <th scope="col">设备信息</th>
-          <th scope="col">操作状态</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor='let user of users$ | async; '>
-          <th scope="row">{{user.id}}</th>
-          <td>{{user.type}}</td>
-          <td>{{user.value}}</td>
-          <td>{{user.cz}}</td>
-        <td>
-        </td>
-        </tr>
-      </tbody>
-    </table>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">关闭</button>
-      </div>
-    </div>
-  </div>
 </div>
-    </div>
-  </div>
 
-  <div class="card col-md-12">
-    <img src="./assets/imgs/温度传感器.png" class="card-img-top" alt="...">
-    <div class="card-body">
-      <h5 class="card-title">设备信息</h5>
-      <p class="card-text">温度传感器</p>
-      <!-- Button trigger modal -->
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#staticBackdrop" (click)="TEMP()">
-  设备详情
-</button>
 
-<!-- Modal -->
-<div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="staticBackdropLabel">设备详情</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body ">
-    <table class="table table-striped">
-      <thead>
-        <tr>
-          <th scope="col">设备id</th>
-          <th scope="col">设备名称</th>
-          <th scope="col">设备信息</th>
-          <th scope="col">操作状态</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor='let user of users$ | async; '>
-          <th scope="row">{{user.id}}</th>
-          <td>{{user.type}}</td>
-          <td>{{user.value}}</td>
-          <td>{{user.cz}}</td>
-        <td>
-        </td>
-        </tr>
-      </tbody>
-    </table>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">关闭</button>
-      </div>
-    </div>
-  </div>
+
+<div class="d-flex justify-content-center bb">
+  <img src="../../assets/images/{{(dangwei$ | async)?.value}}.png" alt="">
+  <a type="button" class="btn btn-primary btn-sm" (click)="one()">1</a>
+  <a type="button" class="btn btn-secondary btn-sm"(click)="two()">2</a>
+  <a type="button" class="btn btn-primary btn-sm" (click)="three()">3</a>
+  <a type="button" class="btn btn-secondary btn-sm" (click)="four()">4</a>
+  <a type="button" class="btn btn-primary btn-sm" (click)="five()">5</a>
+  <a type="button" class="btn btn-secondary btn-sm"(click)="six()">6</a>
 </div>
-    </div>
-  </div>
 
-  <div class="card col-md-12">
-    <img src="./assets/imgs/温湿度传感器.png" class="card-img-top" alt="...">
-    <div class="card-body">
-      <h5 class="card-title">设备信息</h5>
-      <p class="card-text">湿度传感器</p>
-      <!-- Button trigger modal -->
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#staticBackdrop" (click)="HUM()">
-  设备详情
-</button>
+<div class="d-flex justify-content-center aa">
+ <img src="{{(baowen$ | async)?.value ==1?'../../../../../assets/images/5.png':'../../../../assets/images/4.png'}}" alt="">
+  <img src="{{(baowen1$ | async)?.value ==1?'../../../../../assets/images/1.png':'../../../../assets/images/4.png'}}" alt="">
+  <img src="{{(hum1$ | async)?.value ==1?'../../../../../assets/images/3.png':'../../../../assets/images/4.png'}}" alt="">
+</div><div class="d-flex  aa">
+  
+  
+  <p>降温指示灯</p>  <p>升温指示灯</p> <p>除湿指示灯</p>
+</div>
+<div class="d-flex justify-content-center aa">
+  
+  
+ 
+</div>
+<div class="d-flex justify-content-center">
+  <div class=" aa">
+  <div class="e">
+    <p>狗粮温度（°C）</p>
+  </div>
+     <p>{{(temp$ | async)?.value}}</p>
+</div>
 
-<!-- Modal -->
-<div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="staticBackdropLabel">设备详情</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body ">
-    <table class="table table-striped">
-      <thead>
-        <tr>
-          <th scope="col">设备id</th>
-          <th scope="col">设备名称</th>
-          <th scope="col">设备信息</th>
-          <th scope="col">操作状态</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor='let user of users$ | async; '>
-          <th scope="row">{{user.id}}</th>
-          <td>{{user.type}}</td>
-          <td>{{user.value}}</td>
-          <td>{{user.cz}}</td>
-        <td>
-        </td>
-        </tr>
-      </tbody>
-    </table>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">关闭</button>
-      </div>
-    </div>
-  </div>
+ 
 </div>
-    </div>
-  </div>
+<div class="d-flex justify-content-center aa">
+  <p>狗粮湿度（%）</p>
+  <p>{{(hum$ | async)?.value}}</p>
 </div>
+<div class="d-flex justify-content-center aa">
+  <p>狗子体温（°C）</p>
+  <p>{{(dogT$ | async)?.value}}</p>
+</div>
+</div>
+
+

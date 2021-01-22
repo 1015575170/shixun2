@@ -1,65 +1,101 @@
+<form [formGroup]="myForm">
+  <div class="form-group">
+      <label for="ProductKey">产品key</label>
+      <input type="text" class="form-control" id="ProductKey" name="ProductKey" [formControl]='ProductKey' placeholder="删除产品只需要提供产品的ProductKey">
+  </div>
+    <div class="form-group">
+      <label for="name">设备名称</label>
+      <input type="text" class="form-control" id="name" name="name"[formControl]='name' placeholder="新增产品只需要提供产品的名称">
+    </div>
+    </form>
+<button type="button" class="btn btn-outline-primary " (click)='add()'>增加产品</button>
+&nbsp;
+<button type="button" class="btn btn-outline-secondary " (click)='delete()'>删除产品</button>
+<div class="container">
+  <div class="row a">
+    <div class="col-sm">
+     产品名
+    </div>
+    <div class="col-sm">
+      产品key
+    </div>
+  </div>
+  <div class="row a" *ngFor='let pr of prs$ | async; let i = index' >
+    <div class="col-sm">
+        {{pr.ProductName}}
+    </div>
+    <div class="col-sm" #pr.ProductKey >
+        {{pr.ProductKey}}
+    </div>
+    <button class="btn btn-primary" data-toggle="modal" data-target="#staticBackdrop" (click)='eq(pr.ProductKey)'>管理设备</button>
+  </div> 
+</div>
+<div class="modal fade " id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog modal-xl">
+    <div class="modal-content">
+      <div class="modal-header ">
+        <h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="myForm1">
+          <div class="form-group">
+            <label for="ProductKey1">产品key</label>
+            <input type="text" class="form-control" id="ProductKey1" name="ProductKey1" [formControl]='ProductKey1' placeholder="删除设备只需要提供产品的ProductKey和名称">
+        </div>
+        <div class="form-group">
+          <label for="DeviceName">设备名称</label>
+          <input type="text" class="form-control" id="DeviceName" name="DeviceName"[formControl]='DeviceName' placeholder="新增设备只需要提供设备的名称(至少4个字符)和ProductKey">
+        </div>
+        <div class="form-group">
+          <label for="DeviceSecret">设备密钥</label>
+          <input type="text" class="form-control" id="DeviceSecret" name="DeviceSecret"[formControl]='DeviceSecret' placeholder="新增设备只需要提供设备的名称(至少4个字符)和ProductKey">
+        </div>
+        <div class="form-group">
+          <label for="id">设备id</label>
+          <input type="text" class="form-control" id="id" name="id"[formControl]='id'>
+        </div>
+        </form>
+        <button type="button" class="btn btn-outline-primary " (click)='addeq()'>增加产品</button>
+         &nbsp;
+        <button type="button" class="btn btn-outline-secondary " (click)='deleteeq()'>删除产品</button>
+        &nbsp;
+        <button type="button" class="btn btn-outline-success " (click)='searcheq()'>查</button>
+        &nbsp;
+        <button type="button" class="btn btn-outline-success " (click)='glink()'>关联</button>
+        <div class="b"></div>
+        <div class="container">
+          <div class="row a">
+            <div class="col-sm">
+              设备名
+              </div>
+              <div class="col-sm">
+              产品key
+              </div>
+              <div class="col-sm">
+               设备密钥
+              </div>
+          </div>
+          <div class="row a" *ngFor='let eq of eqs$ | async; let i = index' >
+            <div class="col-sm">
+                {{eq.DeviceName}}
+            </div>
+            <div class="col-sm"  >
+                {{eq.ProductKey}}
+            </div>
+            <div class="col-sm a">
+              {{eq.DeviceSecret}}
+          </div>
 
-    <table class="table table-striped">
-      <thead>
-        <tr>
-          <th scope="col">设备id</th>
-          <th scope="col">设备名称</th>
-          <th scope="col">设备信息</th>
-          <th scope="col">操作状态</th>
-          <th scope="col">操作</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor='let user of users$ | async; '>
-          <th scope="row">{{user.id}}</th>
-          <td>{{user.type}}</td>
-          <td>{{user.value}}</td>
-          <td>{{user.cz}}</td>
-        <td>
-                        <!-- Button trigger modal -->
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#staticBackdrop" (click)="select(user)">操作</button>
-  <!-- Modal -->
-  <div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="staticBackdropLabel">操作界面</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
+          </div> 
         </div>
-        <div class="modal-body">
-            <form [formGroup]="myForm">
-                <div class="form-group">
-                    <label for="id">设备id</label>
-                    <input type="text" class="form-control" id="id" name="id" [formControl]='id'>
-                  </div>
-                  <div class="form-group">
-                    <label for="type">设备名称</label>
-                    <input type="text" class="form-control" id="type" name="type" [formControl]='type'>
-                  </div>
-                  <div class="form-group">
-                    <label for="value">设备名称</label>
-                    <input type="text" class="form-control" id="value" name="value" [formControl]='value'>
-                  </div>
-                  <div class="form-group">
-                    <label for="cz">设备名称</label>
-                    <input type="text" class="form-control" id="cz" name="cz" [formControl]='cz'>
-                  </div>
-            </form>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="search()">取消</button>
-          <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="search1()">查询</button>
-          <button type="button" class="btn btn-primary" (click)="add()">增加</button>
-          <button type="button" class="btn btn-danger" (click)="delete()">删除</button>
-          <button type="button" class="btn btn-primary" (click)="update()">修改</button>
-          
-        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Understood</button>
       </div>
     </div>
   </div>
-        </td>
-        </tr>
-      </tbody>
-    </table>
+</div>
